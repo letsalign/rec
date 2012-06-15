@@ -11,7 +11,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614203711) do
+ActiveRecord::Schema.define(:version => 20120614234608) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "idea_id"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["idea_id"], :name => "index_comments_on_idea_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.integer  "company_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "groups", ["company_id"], :name => "index_groups_on_company_id"
+
+  create_table "ideas", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -32,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20120614203711) do
     t.string   "twitter_uid"
     t.string   "twitter_token"
     t.string   "twitter_token_secret"
+    t.integer  "company_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

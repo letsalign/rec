@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   #validates_presence_of :email, :allow_blank => true
   
+  belongs_to :company
+  has_many :ideas
+  has_many :comments
+  #has_and_belongs_to_many :groups
+  
    def self.find_for_twitter_oauth(access_token, signed_in_resource=nil)
 	logger.debug"#{access_token.credentials.token}"
 	if user = self.find_by_twitter_uid(access_token.uid)

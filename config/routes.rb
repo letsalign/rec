@@ -1,4 +1,13 @@
 Rec::Application.routes.draw do
+
+  resources :groups
+
+  resources :companies
+
+  resources :ideas do
+    resources :comments
+  end
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   get "pages/home"
