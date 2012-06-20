@@ -14,7 +14,6 @@ group :development, :test do
 end
 
 gem "devise", "~> 2.1.0"
-gem "omniauth-twitter", "~> 0.0.11"
 gem "twitter-bootstrap-rails", "2.0.6"
 
 # Gems used only for assets and not required
