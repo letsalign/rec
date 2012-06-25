@@ -1,5 +1,5 @@
 <% if @idea == nil %><% @idea = Idea.new %><% end %>
-<%= form_for @idea, :html => {:class => "form-horizontal"} do |f| %>
+<%= form_for @idea, :html => {:class => "form-horizontal new-idea-form"} do |f| %>
 	<% if @idea.errors.any? %>
 		<div id="error_explanation">
 			<h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>

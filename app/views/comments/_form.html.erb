@@ -14,6 +14,6 @@
 
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.hidden_field :idea_id, :value => topic_idea.id %>
-	<%= f.text_area :body, :class => "input-xxlarge", :placeholder => "Add a comment..." %>
+	<%= f.text_field :body, :class => "input-xxlarge", :placeholder => "Add a comment..." %>
 	<%= f.submit nil, :class => "btn" %>
 <% end %>
