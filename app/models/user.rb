@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   #belongs_to :company
   has_and_belongs_to_many :topics
   has_many :ideas, :through => :topics
+  has_many :comments, :through => :ideas
   #has_many :comments
   #has_and_belongs_to_many :groups
 =begin 

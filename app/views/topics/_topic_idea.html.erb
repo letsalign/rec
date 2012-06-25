@@ -9,3 +9,17 @@
 <div class="span1">
 	<%# home_topic.user_id %>
 </div>
+<div class="span12">
+<div class="row">
+	<div class="span10">
+		<% if !topic_idea.comments.blank? %>
+			<% topic_idea.comments.each do |c| %>
+				<i class="icon-comment"></i><%= c.body %>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+<div>
+	<%= render :partial => "comments/form", :locals => {:topic_idea => topic_idea} %>
+</div>
+</div>
