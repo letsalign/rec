@@ -1,26 +1,27 @@
-<%= form_for(@idea) do |f| %>
-  <% if @idea.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
-
-      <ul>
-      <% @idea.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% if @idea == nil %><% @idea = Idea.new %><% end %>
+<%= form_for @idea, :html => {:class => "form-horizontal"} do |f| %>
+	<% if @idea.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+			<ul>
+				<% @idea.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<fieldset>
+		<%= f.hidden_field :topic_id, :value => @topic.id %>
+		<div class="control-group">
+			<%= f.label :title, :class => "control-label" %>
+			<div class="controls"><%= f.text_field :title %></div>
+		</div>
+		<div class="control-group">
+			<%= f.label :body, :class => "control-label" %>
+			<div class="controls"><%= f.text_area :body, :class => "input-xlarge" %></div>
+		</div>
+		<div class="form-actions">
+			<%= f.submit nil, :class => "btn btn-primary" %>
+		</div>
+	</fieldset>
 <% end %>

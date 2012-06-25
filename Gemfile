@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'acts_as_votable'
 
 group :production, :staging do
   gem "pg"

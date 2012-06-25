@@ -10,9 +10,10 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   #validates_presence_of :email, :allow_blank => true
   
-  belongs_to :company
-  has_many :ideas
-  has_many :comments
+  #belongs_to :company
+  has_and_belongs_to_many :topics
+  has_many :ideas, :through => :topics
+  #has_many :comments
   #has_and_belongs_to_many :groups
 =begin 
    def self.find_for_twitter_oauth(access_token, signed_in_resource=nil)
