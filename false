@@ -1,0 +1,6 @@
+[1m[37m      invoke[0m  active_record
+[1m[32m      create[0m    db/migrate/20120626111133_create_groups_users.rb
+[1m[32m      create[0m    app/models/groups_users.rb
+[1m[37m      invoke[0m    test_unit
+[1m[32m      create[0m      test/unit/groups_users_test.rb
+[1m[32m      create[0m      test/fixtures/groups_users.yml
