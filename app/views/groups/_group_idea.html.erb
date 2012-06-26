@@ -1,0 +1,25 @@
+<div class="spanhalf">
+	<a class="btn btn-info" href="#"><i class="icon-thumbs-up icon-white"></i></a>
+	<div>#</div>
+</div> 
+<div class="span10">
+	<div><%= group_idea.title %></div>
+	<div><%= group_idea.description %></div>
+</div>
+<div class="span1">
+	<%# home_group.user_id %>
+</div>
+<div class="span12">
+<div class="row">
+	<div class="span10">
+		<% if !group_idea.comments.blank? %>
+			<% group_idea.comments.each do |c| %>
+				<i class="icon-comment"></i><%= c.body %>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+<div>
+	<%= render :partial => "comments/form", :locals => {:group_idea => group_idea} %>
+</div>
+</div>

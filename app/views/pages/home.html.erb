@@ -1,6 +1,16 @@
-<div class="row">
-	<%= render :partial => "ideas/form" %>
-</div>
-<% if !@ideas.blank? %>
-	<%= render :partial => "pages/home_idea", :collection => @ideas %>
+<% if !@groups.blank? %>
+<%= render :partial => "pages/home_group", :collection => @groups %>
+<% else %>
+You have no groups.Create one to get started.
+<%=link_to 'Create Group', new_group_path %>
 <% end %>
+
+<!--
+<div class="row">
+	<%#= render :partial => "ideas/form" %>
+</div>
+<%# if !@ideas.blank? %>
+	<%#= render :partial => "pages/home_idea", :collection => @ideas %>
+<%# end %>
+
+-->

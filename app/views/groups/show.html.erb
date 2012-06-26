@@ -1,20 +1,14 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @group.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @group.description %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @group.user %>
-</p>
-
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<div class="row">
+	<div class="span12">
+		<h2><%= @group.title %></h2>
+		<p><%= @group.description %></p>
+	</div>
+</div>
+<div class="row">
+	<%= render :partial => "ideas/form" %>
+</div>
+<div class="row idea">
+	<%= render :partial => "groups/group_idea", :collection => @ideas %>
+</div>
+<%# link_to 'Edit', edit_group_path(@group) %><%# link_to 'Back', groups_path %>
