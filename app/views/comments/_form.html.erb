@@ -1,5 +1,5 @@
 <% if @comment == nil %><% @comment = Comment.new %><% end %>
-<%= form_for [home_idea, home_idea.comments.build], :html => {:class => "form-inline new-comment-form"} do |f| %>
+<%= form_for [home_idea, home_idea.comments.build], :html => {:class => "form-inline span12"} do |f| %>
 	<% if @comment.errors.any? %>
 		<div id="error_explanation">
 			<h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>

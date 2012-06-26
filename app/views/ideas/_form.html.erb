@@ -1,5 +1,5 @@
 <% if @idea == nil %><% @idea = Idea.new %><% end %>
-<%= form_for @idea, :html => {:class => "form-horizontal new-idea-form"} do |f| %>
+<%= form_for @idea, :html => {:class => "form-horizontal span12"} do |f| %>
 	<% if @idea.errors.any? %>
 		<div id="error_explanation">
 			<h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
@@ -18,7 +18,7 @@
 		</div>
 		<div class="control-group">
 			<%= f.label :description, :class => "control-label" %>
-			<div class="controls"><%= f.text_area :description, :class => "input-xlarge" %></div>
+			<div class="controls"><%= f.text_area :description, :class => "input-xxlarge", :rows => 5 %></div>
 		</div>
 		<div class="form-actions">
 			<%= f.submit nil, :class => "btn btn-primary" %>

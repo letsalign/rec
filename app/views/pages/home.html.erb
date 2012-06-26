@@ -1,4 +1,6 @@
-<%= render :partial => "ideas/form" %>
+<div class="row">
+	<%= render :partial => "ideas/form" %>
+</div>
 <% if !@ideas.blank? %>
 	<%= render :partial => "pages/home_idea", :collection => @ideas %>
 <% end %>
