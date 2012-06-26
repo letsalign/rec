@@ -1,5 +1,5 @@
 <% if @group == nil %><% @group = Group.new %><% end %>
-<%= form_for @group, :html => {:class => "form-inline"} do |f| %>
+<%= form_for @group, :html => {:class => "form-inline span12"} do |f| %>
 	<% if @group.errors.any? %>
 		<div id="error_explanation">
 			<h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -19,7 +19,7 @@
 		</div>
 		<div class="control-group">
 			<%= f.label :description, :class => "control-label" %>
-			<div class="controls"><%= f.text_area :description, :class => "input-xlarge" %></div>
+			<div class="controls"><%= f.text_area :description, :class => "input-xxlarge", :rows => 5 %></div>
 		</div>
 		<div class="form-actions">
 			<%= f.submit nil, :class => "btn btn-primary" %>
