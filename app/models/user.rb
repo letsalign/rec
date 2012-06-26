@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   #validates_presence_of :email, :allow_blank => true
   
   #belongs_to :company
-  has_and_belongs_to_many :topics
-  has_many :ideas, :through => :topics
+  has_and_belongs_to_many :groups
+  has_many :ideas
   has_many :comments, :through => :ideas
   #has_many :comments
   #has_and_belongs_to_many :groups

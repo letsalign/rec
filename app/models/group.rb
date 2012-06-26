@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  belongs_to :company
-  #has_and_belongs_to_many :users
-  attr_accessible :description, :name
+  has_and_belongs_to_many :user
+  has_many :ideas
+  attr_accessible :description, :title
 end

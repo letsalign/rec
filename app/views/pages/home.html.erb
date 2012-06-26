@@ -1,1 +1,4 @@
-<%= render :partial => "pages/home_topic", :collection => @topics %>
+<%= render :partial => "ideas/form" %>
+<% if !@ideas.blank? %>
+	<%= render :partial => "pages/home_idea", :collection => @ideas %>
+<% end %>

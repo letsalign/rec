@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625125132) do
+ActiveRecord::Schema.define(:version => 20120626061503) do
 
   create_table "comments", :force => true do |t|
+    t.text     "body"
     t.integer  "user_id"
     t.integer  "idea_id"
-    t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -24,47 +24,27 @@ ActiveRecord::Schema.define(:version => 20120625125132) do
   add_index "comments", ["idea_id"], :name => "index_comments_on_idea_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
-  create_table "companies", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "groups", :force => true do |t|
-    t.integer  "company_id"
-    t.string   "name"
+    t.string   "title"
     t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "groups", ["company_id"], :name => "index_groups_on_company_id"
+  add_index "groups", ["user_id"], :name => "index_groups_on_user_id"
 
   create_table "ideas", :force => true do |t|
-    t.integer  "topic_id"
     t.string   "title"
-    t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "topics", :force => true do |t|
-    t.string   "name"
     t.text     "description"
+    t.integer  "user_id"
+    t.integer  "group_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "topics_users", :force => true do |t|
-    t.integer  "topic_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "topics_users", ["topic_id"], :name => "index_topics_users_on_topic_id"
-  add_index "topics_users", ["user_id"], :name => "index_topics_users_on_user_id"
+  add_index "ideas", ["group_id"], :name => "index_ideas_on_group_id"
+  add_index "ideas", ["user_id"], :name => "index_ideas_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -85,23 +65,9 @@ ActiveRecord::Schema.define(:version => 20120625125132) do
     t.string   "twitter_uid"
     t.string   "twitter_token"
     t.string   "twitter_token_secret"
-    t.integer  "company_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "votes", :force => true do |t|
-    t.integer  "votable_id"
-    t.string   "votable_type"
-    t.integer  "voter_id"
-    t.string   "voter_type"
-    t.boolean  "vote_flag"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "votes", ["votable_id", "votable_type"], :name => "index_votes_on_votable_id_and_votable_type"
-  add_index "votes", ["voter_id", "voter_type"], :name => "index_votes_on_voter_id_and_voter_type"
 
 end

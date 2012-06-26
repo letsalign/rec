@@ -1,5 +1,5 @@
 <% if @comment == nil %><% @comment = Comment.new %><% end %>
-<%= form_for [topic_idea, topic_idea.comments.build], :html => {:class => "form-inline new-comment-form"} do |f| %>
+<%= form_for [home_idea, home_idea.comments.build], :html => {:class => "form-inline new-comment-form"} do |f| %>
 	<% if @comment.errors.any? %>
 		<div id="error_explanation">
 			<h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -13,7 +13,7 @@
 	<% end %>
 
 	<%= f.hidden_field :user_id, :value => current_user.id %>
-	<%= f.hidden_field :idea_id, :value => topic_idea.id %>
+	<%= f.hidden_field :idea_id, :value => home_idea.id %>
 	<%= f.text_field :body, :class => "input-xxlarge", :placeholder => "Add a comment..." %>
 	<%= f.submit nil, :class => "btn" %>
 <% end %>

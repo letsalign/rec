@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  user_id: 1
   title: MyString
-  body: MyText
+  description: MyText
+  user: 
+  group: 
 
 two:
-  user_id: 1
   title: MyString
-  body: MyText
+  description: MyText
+  user: 
+  group: 

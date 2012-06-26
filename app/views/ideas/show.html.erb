@@ -1,18 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Topic:</b>
-  <%= @idea.topic_id %>
-</p>
-
-<p>
   <b>Title:</b>
   <%= @idea.title %>
 </p>
 
 <p>
-  <b>Body:</b>
-  <%= @idea.body %>
+  <b>Description:</b>
+  <%= @idea.description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @idea.user.email %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%= @idea.group %>
 </p>
 
 

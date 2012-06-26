@@ -1,10 +1,12 @@
 Rec::Application.routes.draw do
 
+  resources :comments
+
+  resources :ideas
+
   resources :topics
 
   resources :groups
-
-  resources :companies
 
   resources :ideas do
     resources :comments

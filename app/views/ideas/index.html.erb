@@ -2,9 +2,10 @@
 
 <table>
   <tr>
-    <th>User</th>
     <th>Title</th>
-    <th>Body</th>
+    <th>Description</th>
+    <th>User</th>
+    <th>Group</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +13,10 @@
 
 <% @ideas.each do |idea| %>
   <tr>
-    <td><%= idea.user_id %></td>
     <td><%= idea.title %></td>
-    <td><%= idea.body %></td>
+    <td><%= idea.description %></td>
+    <td><%= idea.user %></td>
+    <td><%= idea.group %></td>
     <td><%= link_to 'Show', idea %></td>
     <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
     <td><%= link_to 'Destroy', idea, confirm: 'Are you sure?', method: :delete %></td>
