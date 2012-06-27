@@ -1,5 +1,5 @@
 <% if @idea == nil %><% @idea = Idea.new %><% end %>
-<%= form_for @idea, :html => {:class => "form-horizontal span12"} do |f| %>
+<%= form_for @idea, :html => {:class => "form-vertical span12"} do |f| %>
 	<% if @idea.errors.any? %>
 		<div id="error_explanation">
 			<h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
@@ -14,14 +14,14 @@
 		<%= f.hidden_field :user_id, :value => current_user.id %>
 		<%= f.hidden_field :group_id, :value => @group.id %>
 		<div class="control-group">
-			<%= f.label :title, :class => "control-label" %>
-			<div class="controls"><%= f.text_field :title %></div>
+			<%#= f.label :title, :class => "control-label" %>
+			<div class="controls"><%= f.text_field :title, :class => "input-xxlarge", :placeholder => "Title" %></div>
 		</div>
 		<div class="control-group">
-			<%= f.label :description, :class => "control-label" %>
-			<div class="controls"><%= f.text_area :description, :class => "input-xxlarge", :rows => 5 %></div>
+			<%#= f.label :description, :class => "control-label" %>
+			<div class="controls"><%= f.text_area :description, :class => "input-xxlarge", :rows => 3, :placeholder => "Description" %></div>
 		</div>
-		<div class="form-actions">
+		<div class="form-actionscd">
 			<%= f.submit nil, :class => "btn btn-primary" %>
 		</div>
 	</fieldset>
