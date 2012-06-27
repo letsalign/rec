@@ -10,7 +10,7 @@
 	 		<% if user_signed_in? %>
 	 		<div class="nav-collapse">
 	 			<ul class="nav">
-	 				<li><%= link_to "New Idea" %></li>
+	 				<li><%= link_to "New Idea","#myModal", :'data-toggle'=>"modal" %></li>
 					<li><%= link_to "New Group", new_group_path %></li>
 				</ul>
 				<ul class="nav pull-right">
