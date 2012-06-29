@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20120628121003) do
+ActiveRecord::Schema.define(:version => 20120629114231) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -46,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20120628121003) do
     t.integer  "added_by_id"
   end
 
+  add_index "groups_users", ["group_id", "user_id"], :name => "grpusr", :unique => true
   add_index "groups_users", ["group_id"], :name => "index_groups_users_on_group_id"
   add_index "groups_users", ["user_id"], :name => "index_groups_users_on_user_id"
 

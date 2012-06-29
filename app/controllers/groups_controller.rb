@@ -83,10 +83,10 @@ class GroupsController < ApplicationController
   end
   
   def join
-	group_id = params[:group_id]
+	#group_id = params[:id]
 	user_id = current_user.id
 	logger.debug">>>>..#{user_id}"
-	requested = GroupsUsers.where(:user_id=> user_id,:group_id=> group_id).first
+	requested = GroupsUsers.where(:user_id=> user_id,:group_id=> params[:id]).first
        	   #do nothing		
 	if requested.nil?
            GroupsUsers.create(:group_id => group_id,:user_id=> user_id,:is_admin=>false,:is_approved => false)    
