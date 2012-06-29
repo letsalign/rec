@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$(document).ready( function(){
+
+$('.join_group_link').live('click',function(){
+$.post($(this).attr('href'),$(this).serialize(),function(){},'script');
+return false;
+});
+
+});

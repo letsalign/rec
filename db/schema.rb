@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626111133) do
+ActiveRecord::Schema.define(:version => 20120628121003) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -37,8 +37,12 @@ ActiveRecord::Schema.define(:version => 20120626111133) do
   create_table "groups_users", :id => false, :force => true do |t|
     t.integer  "group_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.boolean  "is_approved"
+    t.boolean  "is_admin"
+    t.integer  "approved_by_id"
+    t.integer  "added_by_id"
   end
 
   add_index "groups_users", ["group_id"], :name => "index_groups_users_on_group_id"
@@ -55,6 +59,19 @@ ActiveRecord::Schema.define(:version => 20120626111133) do
 
   add_index "ideas", ["group_id"], :name => "index_ideas_on_group_id"
   add_index "ideas", ["user_id"], :name => "index_ideas_on_user_id"
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "to_id"
+    t.integer  "target_id"
+    t.string   "target_type"
+    t.integer  "notification_type"
+    t.datetime "read_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

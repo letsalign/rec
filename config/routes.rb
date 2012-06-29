@@ -1,12 +1,17 @@
 Rec::Application.routes.draw do
 
+  resources :notifications
+
   resources :comments
 
   resources :ideas
 
   resources :topics
 
-  resources :groups
+  resources :groups do
+         post 'join'
+         post 'add'
+  end
 
   resources :ideas do
     resources :comments

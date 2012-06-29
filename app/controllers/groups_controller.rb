@@ -44,7 +44,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-      	GroupsUsers.create(:group_id => @group.id, :user_id => current_user.id)
+      	GroupsUsers.create(:group_id => @group.id, :user_id => current_user.id,:is_admin=>'true',:is_approved=>'true',:added_by_id=>current_user.id)
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else
@@ -81,4 +81,24 @@ class GroupsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def join
+	group_id = params[:group_id]
+	user_id = current_user.id
+	logger.debug">>>>..#{user_id}"
+	requested = GroupsUsers.where(:user_id=> user_id,:group_id=> group_id).first
+       	   #do nothing		
+	if requested.nil?
+           GroupsUsers.create(:group_id => group_id,:user_id=> user_id,:is_admin=>false,:is_approved => false)    
+	   @admins = GroupsUsers.where(:group_id => group_id,:is_admin => true).all
+	   @admins.each do |f|
+		Notification.add(current_user.id,f.user_id,Notification:: GROUP_JOIN_REQ,f.group)       
+	   end
+	end
+  end  
+  
+  def add
+  
+  end
+  
 end
