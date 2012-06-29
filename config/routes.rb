@@ -4,7 +4,11 @@ Rec::Application.routes.draw do
 
   resources :comments
 
-  resources :ideas
+  resources :ideas do
+  	member do
+  		post 'voteit'
+  	end
+  end
 
   resources :topics
 

@@ -1,0 +1,1 @@
+$("#idea<%= @idea.id %> .idea-vote").html("<%= escape_javascript(render :partial => 'ideas/voteit', :locals => { :idea => @idea }) %>");

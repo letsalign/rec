@@ -5,10 +5,10 @@
 		<p><%= @group.description %></p>
 	</div>
 </div>
-<div class="row">
-	<%= render :partial => "ideas/form" %>
-</div>
-<div class="row idea">
+<!--<div class="row">
+	<%# render :partial => "ideas/form" %>
+</div>-->
+<div class="container">
 	<%= render :partial => "groups/group_idea", :collection => @ideas %>
 </div>
 <%# link_to 'Edit', edit_group_path(@group) %><%# link_to 'Back', groups_path %>
