@@ -80,4 +80,24 @@ class IdeasController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def voteit
+    @idea = Idea.find(params[:id])
+    if params[:vote] == "like"
+      current_user.vote_for(@idea)
+      @notice = "Idea liked"
+    elsif params[:vote] == "unlike"
+      @vote = current_user.votes.find_by_voteable_id(@idea.id)
+      if !@vote.nil?
+        @vote.destroy
+        @notice = "Idea unliked"
+      end
+    end
+    respond_to do |format|
+      #format.html { redirect_to(root_path, :notice => @notice) }
+      format.js
+      #format.json { head :no_content }
+    end
+  end
+  
 end

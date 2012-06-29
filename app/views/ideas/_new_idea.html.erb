@@ -1,5 +1,5 @@
 <% if @idea == nil %><% @idea = Idea.new %><% end %>
-<%= form_for @idea, :html => {:class => "form-horizontal span", :style=>'margin:0px'} do |f| %>
+<%= form_for @idea, :html => {:class => "form-horizontal"} do |f| %>
 	<% if @idea.errors.any? %>
 		<div id="error_explanation">
 			<h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
@@ -12,24 +12,24 @@
 	<% end %>
 	<fieldset>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
-		<div><%= f.label :title, :class => "control-label", :style=> 'margin:0px 10px;width:80px;' %></div>
+		<div><%= f.label :title, :class => "control-label" %></div>
 		<div class="control-group">
-			<div class="controls" style='margin-left:125px;'><%= f.text_field :title, :style=> 'width:350px;' %></div>
+			<div class="controls"><%= f.text_field :title %></div>
 		</div>
-		<div><%= f.label :description, :class => "control-label",:style=> 'margin:0px 10px;width:80px;' %></div>
+		<div><%= f.label :description, :class => "control-label" %></div>
 		<div class="control-group">
-			<div class="controls" style='margin-left:125px;'><%= f.text_area :description, :class => "input-xxlarge", :rows => 5,:style=> 'width:350px;' %></div>
+			<div class="controls"><%= f.text_area :description, :class => "input-xlarge", :rows => 5 %></div>
 		</div>
-		<div><%= f.label :group, :class => "control-label", :style=> 'margin:0px 10px;width:80px;' %></div>
+		<div><%= f.label :group, :class => "control-label" %></div>
 		<div class="control-group">
-			<div class="controls" style='margin-left:125px;'>
-			<%= f.select :group_id,options_from_collection_for_select(current_user.groups, 'id', 'title')%>
-			<%#= f.collection_select :group_id,current_user.groups,:id,:title, :selected => 'mobile',:style=> 'width:350px;' %></div>
+			<div class="controls">
+			<%= f.select :group_id,options_from_collection_for_select(current_user.groups, 'id', 'title') %>
+			<%#= f.collection_select :group_id,current_user.groups,:id,:title, :selected => 'mobile' %></div>
 		</div>
-		 <div class="modal-footer">
-		 <a href="#" class="btn" data-dismiss="modal">Cancle</a>
-   	 	 <%= f.submit 'save', :class => "btn btn-primary" %>
- 		 </div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Cancle</a>
+			<%= f.submit 'save', :class => "btn btn-primary" %>
+		</div>
 	 
 	</fieldset>
 <% end %>

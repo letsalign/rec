@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+	<% if !current_user.voted_on?(idea) %>
+		<a class="btn btn-info voteidea" href="<%= voteit_idea_path(idea, :vote => "like") %>"><i class="icon-thumbs-up icon-white"></i></a>
+	<% else %>
+		<a class="btn btn-warning voteidea" href="<%= voteit_idea_path(idea, :vote => "unlike") %>"><i class="icon-thumbs-up icon-white"></i></a>
+	<% end %>
+<% end %>
+<div class="vote-count"><%= idea.votes.count %></div>
